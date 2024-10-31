@@ -1,6 +1,9 @@
 console.log("JS works!");
 
 function hello() {
+
+    alert("hello...") // koden pausas till jag klickat OK.
+
     document.write(`
         <div>
             Morjens ${myName}! Hur mår du i dag, 
