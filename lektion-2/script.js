@@ -1,5 +1,10 @@
 console.log("JS works!");
 
+function testPrompt() {
+    let user = prompt("Skriv ditt namn:");
+    console.log(`User: ${user}`);
+}
+
 function hello() {
 
     alert("hello...") // koden pausas till jag klickat OK.
