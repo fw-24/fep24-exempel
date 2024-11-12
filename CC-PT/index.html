@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT</title>
+</head>
+<body>
+    <h3>Personal trainer</h3>
+    Hur många minuter har du tränat i dag?
+    <input type="text" id="minutes">
+    <input type="button" onclick="pt()" value="OK">
+    <p id="pt-output">...</p>
+
+    <script>
+        function pt() {
+            const minTime = 30;
+            const maxTime = 180;
+            const trainingTime = Number(document.querySelector("#minutes").value);
+
+            let ptOutput = "Bra jobbat!";
+
+            if (isNaN(trainingTime)) {
+                ptOutput = "Du måste mata in ett numeriskt värde!"
+            } else if (trainingTime < minTime) {
+                ptOutput = "Bättre kan du!"
+            } else if (trainingTime > maxTime) {
+                ptOutput = "Bra, men kom ihåg att vila emellanåt!"
+            }
+
+            document.querySelector("#pt-output").innerHTML = ptOutput;
+        }
+
+    </script>
+</body>
+</html>

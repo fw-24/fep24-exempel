@@ -1,3 +1,7 @@
+function testArg(arg) {
+    alert(`Funktionsargument: ${arg}`)
+}
+
 function addFive() {
     const tal = document.querySelector("#tal").value;
     document.querySelector("#tal").value = Number(tal) + 5;
