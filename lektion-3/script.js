@@ -1,3 +1,8 @@
+function addFive() {
+    const tal = document.querySelector("#tal").value;
+    document.querySelector("#tal").value = Number(tal) + 5;
+}
+
 function greeting() {
     //const name = document.getElementById("namn").value;
     const name = document.querySelector("#namn").value;
