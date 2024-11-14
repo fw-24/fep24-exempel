@@ -36,10 +36,30 @@ for (let i = 0; i < colors.length; i++) {
     console.log(`color: ${colors[i]}`)
 
     const listElements = document.querySelector('#lista').children;
-
     listElements[i].style = `color: ${colors[i]};`;
-    listElements[i].innerHTML += ` (${colors[i]})`;
 }
+// for of-loop ger varje element
+const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+for (const day of days) {
+    console.log(day);
+    document.querySelector('#days').innerHTML += `<li>${day}</li>`
+}
+// for in-loop ger index-nummer
+for (const i in colors) {
+    console.log(`${i}: ${colors[i]}`);
+    document.querySelector('#lista')
+        .children[i].innerHTML += ` (${colors[i]})`;
+}
+
+const person = {
+    name: "Linus",
+    age: 50,
+    inventions: ["Linux", "Git"]
+}
+console.log(person.name, person.age, person.inventions)
+console.log(person.inventions[1])
+
+
 
 
 
