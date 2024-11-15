@@ -1,10 +1,10 @@
 
-const myList = [
+const arrayOfObjects = [
     { text: "Första", num: 1 },
     { text: "Andra", num: 2},
     { text: "Tredje", num: 3}
 ]
-for (const li of myList) {
+for (const li of arrayOfObjects) {
     const liHTML = `<li>${li.num} - ${li.text}</li>`; // <li>Första</li>
     document.querySelector('#lista').innerHTML += liHTML;
 }
@@ -17,8 +17,10 @@ for (let i = 0; i < colors.length; i++) {
     console.log(`color: ${colors[i]}`)
 
     const listElements = document.querySelector('#lista').children;
-    listElements[i].style = `color: ${colors[i]};`;
+    listElements[i].style.color = colors[i];
 }
+document.querySelector('#lista').style.backgroundColor = 'pink';
+
 // for of-loop ger varje element
 const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 for (const day of days) {
@@ -50,6 +52,34 @@ colors.forEach(function (color) {
 days.forEach(function (day, i) {
     console.log(`forEach: ${i} ${day}`);
 });
+
+const linkUrl = document.querySelector('#my-link').getAttribute('href');
+console.log(linkUrl);
+console.log(document.querySelector('#my-link').getAttribute('data-info'));
+console.log(document.querySelector('#bild').getAttribute('src'));
+
+// Funkar, men bara för första träffen:
+document.querySelector('.infotext').style.color = 'blue';
+// Funkar för alla som matchar selektorn!
+document.querySelectorAll('.infotext').forEach(function(elem, i) {
+    console.log(elem)
+    elem.style.backgroundColor = "silver";
+    elem.innerHTML = `${i+1}. ${elem.innerHTML}`;
+});
+
+// motsvarar onclick="" i html:
+document.querySelector('#btn').addEventListener('click', function() {
+    console.log("du tryckte på knappen!")
+});
+
+document.querySelectorAll('#lista li').forEach(function(li) {
+
+    li.addEventListener('click', function(evt) {
+        console.log(evt.target); // ger det element jag klickade på
+        document.querySelector('#list-out').innerHTML = `Du klickade på ${evt.target.innerHTML}`;
+    })
+});
+    
 
 
 

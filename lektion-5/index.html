@@ -6,12 +6,31 @@
     <title>Lektion 5</title>
 </head>
 <body>
+    <style>
+        .infotext { font-style: italic; }
+        #lista li { cursor: pointer; }
+    </style>
     <h2>Lektion 5</h2>
 
+    <button id="btn" type="button">Knapp</button><br>
 
     <ul id="lista"></ul>
+    <p id="list-out"></p>
+
+    <a id="my-link" href="http://arcada.fi" data-info="Tilläggsinfo">Arcada</a><br>
+
+    <img id="bild" src="https://picsum.photos/100"></img>
+
+    <p class="infotext" onclick="console.log('du klickade!')">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+
+    
+
+    <p class="infotext">Nam amet facilis ipsam laborum, similique inventore quidem reiciendis doloribus nulla asperiores</p>
 
     <ol id="days"></ol>
+
+    <p class="infotext">Till sist...</p>
+
 
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array café</title>
+</head>
+<body>
+    <h3>Array café</h3>
+
+    <ul id="cafe"></ul>
+
+    <ul id="cafe-v2"></ul>
+
+    <ul id="cafe-v3"></ul>
+
+    <script>          // 0         1       2
+        const names =  [ "Kaffe", "Munk", "Glass" ];
+        const prices = [ 3,        3.5,     4 ];   
+        const stock =  [ 100,      15,      45 ];  
+        
+        console.log(`En ${names[1]} kostar ${prices[1]} € och vi har ${stock[1]} på lager.`);
+        prices[1] = 5;
+        stock[1] = 2;
+        console.log(`En ${names[1]} kostar ${prices[1]} € och vi har ${stock[1]} på lager.`);
+
+        for (const i in names) {
+            console.log(names[i]);
+            document.querySelector("#cafe").innerHTML += `<li>${names[i]}: ${prices[i]} €</li>`;
+        }
+        /**
+         * Bättre produktregister med Array av objekt!
+         */
+        
+        const products = [
+            { name: "Kaffe", price: 3, stock: 100 },
+            { name: "Munk", price: 3.5, stock: 15 },
+            { name: "Glass", price: 4, stock: 45 }
+        ];
+        // "for in" ger index i variabeln i
+        for (const i in products) {
+            document.querySelector("#cafe-v2").innerHTML += `
+                <li>${products[i].name} ${products[i].price} € (saldo: ${products[i].stock})</li>
+            `;
+        }
+
+        // "for of" ger hela objekt
+        for (const product of products) {
+            document.querySelector("#cafe-v3").innerHTML += `
+                <li>${product.name} kostar ${product.price} €</li>
+            `;
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
