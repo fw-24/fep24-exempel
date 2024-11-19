@@ -76,16 +76,32 @@ const secondsTimer = setInterval(function () {
     seconds++;
     console.log(seconds);
     document.querySelector('#seconds').innerText = seconds;
-
 }, 1000)
 
 
 document.querySelector('#btn')
     .addEventListener('click', () => clearInterval(secondsTimer));
 
-
 // setTimeout funkar på samma sätt, men kör bara en gång
 setTimeout(() => console.log('Det har gått 3 sekunder!'), 3000)
+
+
+let count = 1;
+// att först skapa en variabel för setInterval ger större kontroll
+let counter = null;
+
+counter = setInterval(() => {
+    count++;
+    document.querySelector('#count-up').innerText = count;
+    if (count == 5) {
+        clearInterval(counter); // stoppa timern
+        counter = null; // radera timern
+    }
+}, 500)
+
+
+
+
 
 
 
