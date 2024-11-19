@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 6</title>
+</head>
+<body>
+    <style>
+        #links-container {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        #links-container>div {
+            border: 1px solid rgb(32, 20, 192);
+            background-color: white;
+        }
+        #links-container>div>span {
+            color: blue;
+        }
+    </style>
+    <h2>Lektion 6</h2>
+
+    <p id="seconds">0</p>
+
+    <button id="btn" type="button">Sluta räkna sekunder</button><br>
+
+    <ul id="lista"></ul>
+    <p id="list-out"></p>
+
+    
+    <div id="links-container">
+        <div class="link">
+            <span>&raquo;</span> <a href="https://arcada.fi">Arcada</a>
+        </div>
+        <div class="link">
+            <span>&raquo;</span> <a href="https://github.com">GitHub</a>
+        </div>
+        <div class="link">
+            <span>&raquo;</span> <a href="https://w3schools.com/js">W3Schools</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
