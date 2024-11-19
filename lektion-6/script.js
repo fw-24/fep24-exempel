@@ -74,7 +74,7 @@ const myArrowFunction = () => {
 let seconds = 0;
 const secondsTimer = setInterval(function () {
     seconds++;
-    console.log(seconds);
+    //console.log(seconds);
     document.querySelector('#seconds').innerText = seconds;
 }, 1000)
 
@@ -86,18 +86,29 @@ document.querySelector('#btn')
 setTimeout(() => console.log('Det har gått 3 sekunder!'), 3000)
 
 
-let count = 1;
+/**
+ * Code Challenge: Kitchen timer
+ */
+let countDown = 30;
 // att först skapa en variabel för setInterval ger större kontroll
-let counter = null;
+let kitchenTimer = null;
 
-counter = setInterval(() => {
-    count++;
-    document.querySelector('#count-up').innerText = count;
-    if (count == 5) {
-        clearInterval(counter); // stoppa timern
-        counter = null; // radera timern
-    }
-}, 500)
+document.querySelector('#timer-output').innerText = countDown;
+
+function startTimer() {
+    
+    kitchenTimer = setInterval(() => {
+        countDown--;
+        document.querySelector('#timer-output').innerText = countDown;
+        if (countDown == 0) {
+            clearInterval(kitchenTimer); // stoppa timern
+            kitchenTimer = null; // radera timern
+            document.querySelector('#timer-output').innerText = 'Tiden är ute!';
+        }
+    }, 1000);
+}
+
+document.querySelector('#start-stop').addEventListener('click', () => startTimer());
 
 
 
