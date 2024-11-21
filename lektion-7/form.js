@@ -7,7 +7,9 @@
  *  blur = när man väljer ett annat fält
  * */ 
 
-document.querySelector('#formfields').addEventListener('change', (evt) => {
+document.querySelector('#formfields').addEventListener('input', (evt) => {
     const field = evt.target;
-    console.log(`${field.tagName} ${field.getAttribute('type')}: ${field.value}`)
+    document.querySelector('#form-out').innerHTML = `
+        ${field.tagName} ${field.getAttribute('type')}: ${field.value}
+    `;
 });
