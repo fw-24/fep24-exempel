@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC</title>
+</head>
+<body>
+    <style>
+  
+    </style>
+    <h2>CC Kitchen Timer</h2>
+
+
+    <div style="border: 1px solid black; padding: 10px;">
+        <h4>Äggklocka</h4>
+        <input id="seconds" type="number" value="30">
+        <p id="timer-output">--</p>
+        <input type="button" id="start-stop" value="Starta / Pausa">
+        <input type="button" id="reset" value="Reset">
+
+    </div>
+
+    
+    <script>
+    let countDown = 0;
+    // att först skapa en variabel för setInterval ger större kontroll
+    let kitchenTimer = null; // som pythons None
+    let timerPaused = false;
+
+    function resetTimer() {
+        clearInterval(kitchenTimer);
+        kitchenTimer = null;
+        timerPaused = false;
+        countDown = document.querySelector('#seconds').value;
+        document.querySelector('#timer-output').innerText = "--";
+    }
+
+    function startTimer() {
+        if (kitchenTimer !== null) { // om timern är igång
+            document.querySelector('#timer-output').innerText = `${countDown} - paused`;
+            clearInterval(kitchenTimer);
+            kitchenTimer = null;
+            timerPaused = true;
+            return;
+        }
+        if (!timerPaused) { // utropsteclecn före betyder "not" (inte)
+            countDown = document.querySelector('#seconds').value;
+        }
+        
+        document.querySelector('#timer-output').innerText = countDown;
+        
+        console.log(`startTimer ${countDown}`);
+
+        kitchenTimer = setInterval(() => {
+            timerPaused = false;
+            countDown--;
+            document.querySelector('#timer-output').innerText = countDown;
+            if (countDown <= 0) {
+                clearInterval(kitchenTimer); // stoppa timern
+                kitchenTimer = null; // radera timern
+                document.querySelector('#timer-output').innerText = 'Tiden är ute!';
+            }
+        }, 1000);
+    }
+
+    // lyssnare
+    document.querySelector('#start-stop')
+        .addEventListener('click', startTimer);
+    
+    document.querySelector('#reset')
+        .addEventListener('click', resetTimer)
+
+    </script>
+</body>
+</html>
