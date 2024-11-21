@@ -13,3 +13,8 @@ document.querySelector('#formfields').addEventListener('input', (evt) => {
         ${field.tagName} ${field.getAttribute('type')}: ${field.value}
     `;
 });
+
+document.querySelector('#btn-text').addEventListener('click', () => {
+    document.querySelector('#form-out')
+        .innerHTML = document.querySelector('#min-text').value;
+});
