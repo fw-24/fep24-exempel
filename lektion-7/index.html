@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 7</title>
+</head>
+<body>
+    <b id="tid"></b>
+    <b id="jul"></b>
+    
+    <script>
+        const idag = new Date();
+        const julafton = new Date(2024, 11, 24);
+
+        const dagar = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"];
+
+        // Tar emot ett datumobjekt och returnerar finlandssvensk text
+        function fiSvDag(d) {
+            return `
+                ${dagar[d.getDay()].toLowerCase()}
+                ${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()}
+            `;
+        }
+
+        document.querySelector('#tid').innerHTML = `I dag är det ${fiSvDag(idag)}`;
+        document.querySelector('#jul').innerHTML = `Julafton är ${fiSvDag(julafton)}`;
+
+
+
+    </script>
+</body>
+</html>
