@@ -9,8 +9,18 @@
 
 document.querySelector('#formfields').addEventListener('input', (evt) => {
     const field = evt.target;
+    let fieldVal = field.value;
+    let fieldType = field.getAttribute('type');
+
+    if (field.getAttribute('type') == "checkbox") {
+        fieldVal = field.checked;
+    } else if (field.tagName == "SELECT") {
+        fieldType = "";
+    }
+
+
     document.querySelector('#form-out').innerHTML = `
-        ${field.tagName} ${field.getAttribute('type')}: ${field.value}
+        ${field.tagName} ${fieldType}: ${fieldVal}
     `;
 });
 
