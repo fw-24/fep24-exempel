@@ -24,8 +24,7 @@
     
     <script>
     let countDown = 0;
-    // att först skapa en variabel för setInterval ger större kontroll
-    let kitchenTimer = null; // som pythons None
+    let kitchenTimer = null; 
     let timerPaused = false;
 
     function resetTimer() {
@@ -44,13 +43,11 @@
             timerPaused = true;
             return;
         }
-        if (!timerPaused) { // utropsteclecn före betyder "not" (inte)
+        if (!timerPaused) { // utropstecken före betyder "not" (inte)
             countDown = document.querySelector('#seconds').value;
         }
         
         document.querySelector('#timer-output').innerText = countDown;
-        
-        console.log(`startTimer ${countDown}`);
 
         kitchenTimer = setInterval(() => {
             timerPaused = false;
