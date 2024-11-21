@@ -6,28 +6,15 @@
     <title>Lektion 7</title>
 </head>
 <body>
-    <b id="tid"></b>
-    <b id="jul"></b>
+    <p id="tid"></p>
+    <p id="jul"></p>
+
+    <p id="formfields">
+        Text: <input type="text"><br>
+        Datum: <input id="dat" type="date">
+    </p>
     
-    <script>
-        const idag = new Date();
-        const julafton = new Date(2024, 11, 24);
-
-        const dagar = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"];
-
-        // Tar emot ett datumobjekt och returnerar finlandssvensk text
-        function fiSvDag(d) {
-            return `
-                ${dagar[d.getDay()].toLowerCase()}
-                ${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()}
-            `;
-        }
-
-        document.querySelector('#tid').innerHTML = `I dag är det ${fiSvDag(idag)}`;
-        document.querySelector('#jul').innerHTML = `Julafton är ${fiSvDag(julafton)}`;
-
-
-
-    </script>
+    <script src="form.js"></script>
+    <script src="datum.js"></script>
 </body>
 </html>
