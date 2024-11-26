@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 8</title>
+</head>
+<body>
+    <h3>Lektion 8</h3>
+
+
+    <p id="greeting"></p>
+    <p id="name-form" style="display: none;">
+        <input type="text" id="namn" placeholder="Vad heter du?">
+        <input type="button" onclick="saveNamn()" value="Spara">
+    </p>
+
+    <i><p id="joke">Loading...</p></i>
+
+    <script>
+        const namnSaved = localStorage.getItem('namn');
+        const counter = localStorage.getItem('visitCount') || 0;
+        localStorage.setItem('visitCount', Number(counter)+1);
+
+        function saveNamn() {
+            localStorage.setItem('namn', document.querySelector('#namn').value);
+            location.reload();
+        }
+
+        if (namnSaved) {
+            console.log(`Hej ${namnSaved}!`);
+            document.querySelector('#greeting').innerText = `
+                Hej ${namnSaved}, du har besök sidan ${counter} gånger!
+            `;
+        } else {
+            // Visa namnformuläret
+            console.log(`localStorage "namn" saknas`);
+            document.querySelector('#name-form').style.display = 'block';
+        }
+
+        // Synkront exempel
+        function two() {
+            for (let i = 0; i < 20000; i++) {
+                console.log('.')
+            }
+            console.log('två');
+        }
+        console.log("ett");
+        two(); // JS väntar på att two() kört klart
+        console.log("tre");
+
+        // Asynkront exempel
+        console.log(1);
+        setTimeout(() => {
+            console.log(2)
+        }, 100);
+        // JS väntar inte på att setTimeout ska bli klar eftersom den är asynkron
+        console.log(3);
+
+        // Hämta skämt med fetch()
+        async function getJoke() {
+            const resp = await fetch("https://v2.jokeapi.dev/joke/Programming?format=txt&type=single&safe-mode");
+            //console.log(resp);
+            const jokeText = await resp.text();
+            //console.log(jokeText);
+            document.querySelector('#joke').innerText = jokeText;
+        }
+        getJoke();
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

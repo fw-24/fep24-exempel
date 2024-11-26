@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gubben i lådan</title>
+</head>
+<body>
+    <h3>Gubben i lådan</h3>
+
+    <div>
+        <img id="jack" src="./img/jack-closed-small.png">
+    </div>
+    <input id="jack-trigger" type="range" value="0">
+    
+    <script>
+        const jack = document.querySelector('#jack');
+        let jackIsOpen = false;
+
+        function jackOpen() {
+            if (!jackIsOpen) {
+                console.log("open...")
+                jack.src = "./img/jack-open-small.png";
+                jackIsOpen = true;
+            }
+        }
+        function jackClose() {            
+            if (jackIsOpen) {
+                console.log("close...")
+                jack.src = "./img/jack-closed-small.png";
+                jackIsOpen = false;
+            }
+        }
+
+        jack.addEventListener('mousedown', jackOpen);
+        jack.addEventListener('mouseup', jackClose);
+
+        // Slider
+        const trigger = document.querySelector('#jack-trigger');
+        trigger.addEventListener('input', () => {
+            console.log(trigger.value);
+            if (trigger.value > 75) {
+                jackOpen();
+            } else {
+                jackClose();
+            }
+        })
+
+        // setTimeout kör bara en gång
+        setTimeout(jackOpen, 2000);
+
+        
+
+
+
+    </script>
+</body>
+</html>
