@@ -6,14 +6,34 @@
     <title>Lektion 10</title>
 </head>
 <body>
-    <h3>Lektion 10</h3>
+    <h2>Lektion 10</h2>
+
+    <span onclick="getPage('page1')">Första sidan</span>
+    <span onclick="getPage('page2')">Andra sidan</span>
+    
+    <h3 id="page-title"></h3>
+    <div id="page-content">...</div>
+
+
     <p id="joke">JSON-joke</p>
+
     <script>
+        async function getPage(pageName) {
+            const resp = await fetch(`./${pageName}.json`);
+            const page = await resp.json();
+
+            console.log(page);
+            document.querySelector('#page-title').innerHTML = page.title;
+            document.querySelector('#page-content').innerHTML = page.content;
+
+        }
+        getPage('page2');
+
         async function getJoke() {
             const resp = await fetch("https://v2.jokeapi.dev/joke/Programming?type=single&safe-mode");
             const jokeObject = await resp.json(); // Vi deserialiserar json till objekt (som JSON.parse())
             console.log(jokeObject);
-            console.log(JSON.stringify(jokeObject))
+            //console.log(JSON.stringify(jokeObject))
 
             document.querySelector('#joke').innerHTML = jokeObject.joke;
 

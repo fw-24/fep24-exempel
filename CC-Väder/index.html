@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC Väder</title>
+</head>
+<body>
+    <h3>CC Vedervärdigt väder</h3>
+
+    <!-- Ett sätt -->
+    <div id="weather">...</div>
+
+    <!-- Ett annat sätt -->
+    <div>
+        I dag är det <span id="temp"></span> °C 
+        och det blåser <span id="wind"></span> m/s. 
+    </div>
+
+    <script>
+    async function getWeather() {
+        const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=60&longitude=25&current_weather=true&windspeed_unit=ms");
+        const weather = await response.json(); // Omvandlar JSON från open-meteo till ett objekt
+        
+        console.log(weather);
+
+        // ett sätt
+        document.querySelector('#weather').innerHTML = `
+            I dag är det
+            ${weather.current_weather.temperature} °C
+            och det blåser ${weather.current_weather.windspeed} m/s.
+        `;
+        // ett annat bra sätt
+        document.querySelector('#temp').innerHTML = weather.current_weather.temperature;
+        document.querySelector('#wind').innerHTML = weather.current_weather.windspeed;
+    }
+    getWeather();
+
+    </script>
+    
+</body>
+</html>
