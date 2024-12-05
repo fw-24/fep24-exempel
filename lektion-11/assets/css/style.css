@@ -1,8 +1,17 @@
-#menu span {
+#menu {
+    display: none;
+}
+#hamburger, #menu div {
     cursor: pointer;
+}
+#menu div {
     color: blue;
     text-decoration: underline;
 }
 #page-image img {
     height: 200px;
+}
+#footer {
+    color:white;
+    background-color: black;
 }
