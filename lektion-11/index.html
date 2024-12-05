@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 11</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <h2>Lektion 11</h2>
+
+    <div id="menu">
+        <span data-page="page1">Första sidan</span>
+        <span data-page="page2">Andra sidan</span>
+    </div>
+    <h3 id="page-title"></h3>
+    <div id="page-image"></div>
+    <div id="page-content">...</div>
+
+    <script>
+        async function getPage(pageName) {
+            const resp = await fetch(`./assets/pages/${pageName}.json`);
+            const page = await resp.json();
+
+            console.log(page);
+            document.querySelector('#page-title').innerHTML = page.title;
+            document.querySelector('#page-content').innerHTML = page.content;
+            
+            if (page.image) {
+                document.querySelector('#page-image').innerHTML = `
+                    <img src="./assets/img/${page.image}">
+                `;
+            } else {
+                document.querySelector('#page-image').innerHTML = "";
+            }
+
+
+        }
+        getPage('page2');
+
+        document.querySelector('#menu').addEventListener('click', (evt) => {
+            getPage(evt.target.getAttribute('data-page'));
+        });
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,8 @@
+#menu span {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+#page-image img {
+    height: 200px;
+}
